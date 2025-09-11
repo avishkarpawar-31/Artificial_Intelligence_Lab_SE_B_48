@@ -1,17 +1,18 @@
 # Graph definition
 graph = {
-    'S': {'A': 1, 'B': 4},
-    'A': {'B': 2, 'C': 5, 'D': 12},
-    'B': {'C': 2},
-    'C': {'D': 3, 'G': 7},
-    'D': {'G': 2},
-    'G': {}
+    'Home': {'School': 50, 'Garden': 40,'Bank':45},
+    'School': {'Post office': 59, 'Railway Station': 75},
+    'Garden': {'Railway Station': 72},
+    'Bank': {'Police Station': 60},
+    'Police Station': {'University': 25},
+    'Railway Station': {'University':40},
+    'University': {}
 }
 
 # Heuristic values
 heuristics = {
-    'S': 7, 'A': 6, 'B': 4,
-    'C': 2, 'D': 1, 'G': 0
+    'Home': 120, 'Bank': 80, 'Garden': 100,
+    'School': 70, 'Railway Station': 20, 'Police Station': 26,'Post office':110,'University':0,
 }
 
 def a_star_search(graph, heuristics, start, goal):
@@ -60,7 +61,7 @@ def a_star_search(graph, heuristics, start, goal):
 
     return None, float('inf')
 
-start, goal = 'S', 'G'
+start, goal = 'Home', 'University'
 path, cost = a_star_search(graph, heuristics, start, goal)
 
 if path:
@@ -68,4 +69,3 @@ if path:
     print(f"Total cost: {cost}")
 else:
     print("No path found.")
-
